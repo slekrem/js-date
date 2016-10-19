@@ -1,0 +1,169 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`js-date`
+
+@demo demo/index.html
+-->
+
+<dom-module id="js-date">
+  <script>
+    Polymer({
+      is: 'js-date',
+      properties: {
+        _date: {
+          type: Date
+        },
+
+        date: {
+          type: Object,
+          notify: true,
+          computed: '_computeDate(_date)'
+        },
+
+        dateString: {
+          type: String,
+          notify: true,
+          computed: '_computeDateString(_date)'
+        },
+        setDateString: {
+          type: String,
+          observer: '_dateStringChanged'
+        },
+
+        fullYear: {
+          type: Number,
+          notify: true,
+          computed: '_computeFullYear(_date)'
+        },
+        setFullYear: {
+          type: Number,
+          observer: '_fullYearChanged'
+        },
+
+        monthIndex: {
+          type: Number,
+          notify: true,
+          computed: '_computeMonthIndex(_date)'
+        },
+        setMonthIndex: {
+          type: Number,
+          observer: '_monthIndexChanged'
+        },
+
+        dayIndex: {
+          type: Number,
+          notify: true,
+          computed: '_computeDayIndex(_date)'
+        },
+        setDayIndex: {
+          type: Number,
+          observer: '_dayIndexChanged'
+        },
+
+        hours: {
+          type: Number,
+          notify: true,
+          computed: '_computeHours(_date)'
+        },
+        setHours: {
+          type: Number,
+          observer: '_hoursChanged'
+        },
+
+        minutes: {
+          type: Number,
+          notify: true,
+          computed: '_computeMinutes(_date)'
+        },
+        setMinutes: {
+          type: Number,
+          observer: '_minutesChanged'
+        },
+
+        seconds: {
+          type: Number,
+          notify: true,
+          computed: '_computeSeconds(_date)'
+        },
+        setSeconds: {
+          type: Number,
+          observer: '_secondsChanged'
+        },
+
+        milliseconds: {
+          type: Number,
+          notify: true,
+          computed: '_computeMilliseconds(_date)'
+        },
+        setMilliseconds: {
+          type: Number,
+          observer: '_millisecondsChanged'
+        },
+      },
+      attached: function() {
+        this._date = new Date();
+      },
+
+      _computeDate: function(date) {
+        return date;
+      },
+
+      _computeDateString: function(date) {
+        return date.toDateString();
+      },
+      _dateStringChanged: function(dateString) {
+        this._date = new Date(dateString);
+      },
+
+      _computeFullYear: function(date) {
+        return date.getFullYear();
+      },
+      _fullYearChanged: function(fullYear) {
+        this._date.setFullYear(fullYear);
+      },
+
+      _computeMonthIndex: function(date) {
+        return date.getMonth();
+      },
+      _monthIndexChanged: function(monthIndex) {
+        this._date.setMonth(monthIndex);
+      },
+
+      _computeDayIndex: function(date) {
+        return date.getDay();
+      },
+      _dayIndexChanged: function(dayIndex) {
+        this._date.setDate(dayIndex);
+      },
+
+      _computeHours: function(date) {
+        return date.getHours();
+      },
+      _hoursChanged: function(hours) {
+        this._date.setHours(hours);
+      },
+
+      _computeMinutes: function(date) {
+        return date.getMinutes();
+      },
+      _minutesChanged: function(minutes) {
+        this._date.setMinutes(minutes);
+      },
+
+      _computeSeconds: function(date) {
+        return date.getSeconds();
+      },
+      _secondsChanged: function(seconds) {
+        this._date.setSeconds(seconds);
+      },
+
+      _computeMilliseconds: function(date) {
+        return date.getMilliseconds();
+      },
+      _millisecondsChanged: function(milliseconds) {
+        this._date.setMilliseconds(milliseconds);
+      }
+    });
+  </script>
+</dom-module>

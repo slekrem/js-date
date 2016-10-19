@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>js-date demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../polymer/polymer.html">
+
+    <link rel="import" href="../js-date.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <dom-module id="basic-js-date-demo">
+      <template>
+        <js-date
+          date="{{date}}"
+          date-string="{{dateString}}"
+          full-year="{{fullYear}}"
+          month-index="{{monthIndex}}"
+          day-index="{{dayIndex}}"
+          hours="{{hours}}"
+          minutes="{{minutes}}"
+          seconds="{{seconds}}"
+          milliseconds="{{milliseconds}}"></js-date>
+        date: [[date]] <br>
+        dateString: [[dateString]] <br>
+        fullYear: [[fullYear]] <br>
+        monthIndex: [[monthIndex]] <br>
+        dayIndex: [[dayIndex]] <br>
+        hours: [[hours]] <br>
+        minutes: [[minutes]] <br>
+        seconds: [[seconds]] <br>
+        milliseconds: [[milliseconds]] <br>
+      </template>
+      <script>
+        HTMLImports.whenReady(function () {
+          Polymer({
+            is: 'basic-js-date-demo'
+          });
+        });
+      </script>
+    </dom-module>
+
+    <div class="vertical-section-container centered">
+      <h3>Basic js-date Demo</h3>
+      <demo-snippet>
+        <basic-js-date-demo></basic-js-date-demo>
+        <template>
+          <js-date
+            date="{{date}}"
+            date-string="{{dateString}}"
+            full-year="{{fullYear}}"
+            month-index="{{monthIndex}}"
+            day-index="{{dayIndex}}"
+            hours="{{hours}}"
+            minutes="{{minutes}}"
+            seconds="{{seconds}}"
+            milliseconds="{{milliseconds}}"></js-date>
+        </template>
+      </demo-snippet>
+    </div>
+
+  </body>
+</html>
