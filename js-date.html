@@ -50,6 +50,10 @@
           type: Number,
           observer: '_monthIndexChanged'
         },
+        month: {
+          type: Number,
+          computed: '_computeMonth(monthIndex)'
+        },
 
         dayIndex: {
           type: Number,
@@ -59,6 +63,16 @@
         setDayIndex: {
           type: Number,
           observer: '_dayIndexChanged'
+        },
+
+        day: {
+          type: Number,
+          notify: true,
+          computed: '_computeDay(_date)'
+        },
+        setDay: {
+          type: Number,
+          observer: '_dayChanged'
         },
 
         hours: {
@@ -129,12 +143,28 @@
       _monthIndexChanged: function(monthIndex) {
         this._date.setMonth(monthIndex);
       },
+      _computeMonth: function(monthIndex) {
+        if (monthIndex == 0) {
+          return 1;
+        } else if (monthIndex == 11) {
+          return 12;
+        } else {
+          return monthIndex + 1;
+        }
+      },
 
       _computeDayIndex: function(date) {
         return date.getDay();
       },
       _dayIndexChanged: function(dayIndex) {
         this._date.setDate(dayIndex);
+      },
+
+      _computeDay: function(date) {
+        return date.getDate();
+      },
+      _dayChanged: function(day) {
+        this._date.setDate(day);
       },
 
       _computeHours: function(date) {
