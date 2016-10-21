@@ -115,8 +115,14 @@
           type: Number,
           observer: '_millisecondsChanged'
         },
+
+        datetimeLocal: {
+          type: String,
+          notify: true,
+          computed: '_computeDatetimeLocal(fullYear, month, day, hours, minutes, seconds)'
+        }
       },
-      attached: function() {
+      ready: function() {
         this._date = new Date();
       },
 
@@ -194,6 +200,11 @@
       },
       _millisecondsChanged: function(milliseconds) {
         this._date.setMilliseconds(milliseconds);
+      },
+
+      _computeDatetimeLocal: function(fullYear, month, day, hours, minutes, seconds) {
+        return fullYear + "-" + month + "-" + day + "T"
+          + hours + ":" + minutes + ":" + seconds;
       }
     });
   </script>
